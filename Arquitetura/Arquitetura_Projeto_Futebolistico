@@ -1,0 +1,177 @@
+<mxfile modified="2023-03-23T04:30:18.160Z" host="app.diagrams.net" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="tzkGMXZ5NcabiIawn0kf" version="21.0.6" type="github">
+  <diagram id="WI9T0HZ2pTsCkuznbFz-" name="Page-1">
+    <mxGraphModel dx="670" dy="715" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-132" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAEDED;fontSize=22;fontColor=#FFFFFF;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2077.5" y="361" width="175.5" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-131" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAEDED;fontSize=22;fontColor=#FFFFFF;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1840" y="361" width="175.5" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-130" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAEDED;fontSize=22;fontColor=#FFFFFF;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1598.25" y="361" width="175.5" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-129" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAEDED;fontSize=22;fontColor=#FFFFFF;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1380" y="361" width="175.5" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="8DieQMmsyX2rE4fabxvS-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAEDED;fontSize=22;fontColor=#FFFFFF;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2360" y="210" width="710" height="1209" as="geometry" />
+        </mxCell>
+        <mxCell id="8DieQMmsyX2rE4fabxvS-2" value="Lembrando que os dados que vamos usar nesse artigo são dados públicos, e tu pode encontrar eles aqui:&amp;nbsp;https://github.com/dbaassists/ModelagemDados/tree/main/BaseDados_Copa_Catar_2022&lt;br&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="2429.5" y="221" width="449" height="118" as="geometry" />
+        </mxCell>
+        <mxCell id="8DieQMmsyX2rE4fabxvS-3" value="No código acima carregamos a sessão do spark, funções do pyspark.sql, pandas para puxar os dados do github e algumas estruturas para a criação de schemas das tabelas. Agora vamos carregar os dados em dataframes pandas e converte-los em dataframes spark.&lt;br&gt;Agora que tranformamos as tabelas que baixamos em dataframes, vamos então salvar no stage-zone.&lt;br&gt;No código acima escrevemos no formato(.format(“csv”)) sobrescrevendo os dados(.mode(“overwrite”)) no diretório dbfs:/FileStore/project/olist/stage. Perceba que cada tabela tem seu próprio diretório dentro do stage-zone, fizemos isso para organizar nossas tabelas e facilitar a manutenção e a localização. Agora vamos criar os schemas para as tabelas." style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="2428.5" y="290" width="631.5" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="8DieQMmsyX2rE4fabxvS-4" value="Perceba que os tipos de dados dos schemas do código acima são todos do tipo STRING, definimos assim pois nesse momento ainda não vamos nos preucupar com a tipagem dos dados. Agora vamos aplicar os schemas e fazer a cópia dos dados da stage-zone para a bronze-zone. A bronze-zone é a principal zona do data lake, ela possue todos os dados crus em vários formatos distintos, somente através dela é possível refazer outras zonas como: silver-zone e gold-zone caso estas estejam corrompidas ou desatualizados. Agora vamos aplicar os schemas e carregar os dados da stage-zone.&lt;br&gt;&lt;br&gt;No c&lt;font style=&quot;font-size: 14px;&quot;&gt;ódigo acima carregamos os dados no formato(.format(“csv”), aplicamos o schema, e adicionamos uma coluna “loadingDateStage” com o carimbo de data e hora, é por essa coluna que vamos controlar a versão dos registros das tabelas, mais a frente vamos explicar isso em detalhes. Após carregar os dados vamos então salva-los no formato delta(.format(“delta”)) usando o modo de inserção (.mode(“append”)) na bronze-zone. as tabelas delta aproveitam todos os recursos técnicos dos arquivos Parquet, como uma camada adicional sobre eles.&lt;span style=&quot;box-sizing: inherit; color: rgb(61, 62, 62); letter-spacing: -0.06px;&quot; class=&quot;iz hm&quot;&gt;&amp;nbsp;Essa camada adicional rastreia o controle de versão de dados e metadados, armazena logs de transações para controlar as alterações feitas em uma tabela de dados ou diretório de armazenamento de objetos e fornece transações ACID.&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="2428.5" y="454" width="621.5" height="117" as="geometry" />
+        </mxCell>
+        <mxCell id="8DieQMmsyX2rE4fabxvS-5" value="&lt;div&gt;A silver-zone é a nossa única fonte de verdade, nela precisam conter apenas registros atualizados, se na bronze-zone temos várias cópias de um mesmo registro precisamos garantir que, ao deduplicar os dados venha apenas a última versão atualizada desse registro. Foi o que fizemos no código acima, carregamos os dados com o spark.sql() usamos a função dense_rank para ranquear as linhas e selecionamos apenas as linhas mais recentes pegando pelo campo “loadingDateStage” e adicionamos a tipagem dos dados. Após isso escrevemos novamente no formato delta(.format(“delta”)) na zona dbfs:/FileStore/project/olist/silver escrevendo(.mode(“overwrite”)) em cima de uma tabela existente/não existente. isso nos garante sempre ter os dados mais atualizados e prontos para uso.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Agora que temos a nossa fonte de verdade silver-zone podemos criar várias tabelas com JOINS, funções etc.. na gold-zone a partir da mesma. Vamos então criar uma tabela de chamada “vendas” que vai ser o resultado da união das tabelas:&lt;/div&gt;&lt;div&gt;delta.`dbfs:/FileStore/project/olist/silver/order_payments`, delta.`dbfs:/FileStore/project/olist/silver/order_reviews`, delta.`dbfs:/FileStore/project/olist/silver/customers`&lt;/div&gt;&lt;div&gt;e para fazer nossas análises e gerar gráficos, vamos usar o usando SQL Analytics.&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="2428.5" y="786" width="621.5" height="121" as="geometry" />
+        </mxCell>
+        <mxCell id="8DieQMmsyX2rE4fabxvS-6" value="&lt;div&gt;No código acima fizemos a junção de algumas tabelas e salvamos na zona dbfs:/FileStore/project/olist/gold/sales. caso a tabela exista ela é substituída ou criada e como o resultado dessa tabela vai ficar grande vamos então partitionar pela coluna “estadoCliente”.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;E por fim vamos fazer algumas perguntas e responder usando o SQL, lembrando que vou exibir alguns gráficos, porém, não sei se escolhi os gráficos adequados, mas vamos lá.&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="2429.5" y="1160" width="600.5" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="8DieQMmsyX2rE4fabxvS-9" value="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#4D9900;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2380" y="227.5" width="23" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="8DieQMmsyX2rE4fabxvS-10" value="2" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#4D9900;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2380" y="294.5" width="23" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="8DieQMmsyX2rE4fabxvS-11" value="3" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#4D9900;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2380" y="461.5" width="23" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="8DieQMmsyX2rE4fabxvS-12" value="4" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#4D9900;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2379.9999999999995" y="794.5" width="23" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="8DieQMmsyX2rE4fabxvS-13" value="5" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#4D9900;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2379.9999999999995" y="1164" width="23" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-113" value="&lt;font face=&quot;Comic Sans MS&quot; style=&quot;font-size: 16px;&quot;&gt;Vamos fazer da seguinte forma, ingerir os dados da olist.com passando os dados pelas zonas:&amp;nbsp;&lt;span style=&quot;box-sizing: inherit; color: rgb(61, 62, 62); letter-spacing: -0.06px;&quot; class=&quot;iz hm&quot;&gt;&lt;em style=&quot;box-sizing: inherit;&quot; class=&quot;jv&quot;&gt;stage-transient, bronze-zone, silver-zone e gold-zone&lt;/em&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(61, 62, 62); letter-spacing: -0.06px;&quot;&gt;&amp;nbsp;seguindo assim toda a jornada da qualidade dos dados, e por fim, responder algumas perguntas de negócio.&amp;nbsp;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="1225.5" y="40" width="449" height="118" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-115" value="Origem dos Dados" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#000000;shape=mxgraph.azure.github_code;pointerEvents=1;" parent="1" vertex="1">
+          <mxGeometry x="1221" y="412" width="70" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-140" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.489;entryDx=0;entryDy=0;entryPerimeter=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" source="i0A2lNzfL8dHE3xWsymp-121" target="i0A2lNzfL8dHE3xWsymp-126" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-141" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" source="i0A2lNzfL8dHE3xWsymp-121" target="i0A2lNzfL8dHE3xWsymp-127" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-167" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" source="i0A2lNzfL8dHE3xWsymp-121" target="i0A2lNzfL8dHE3xWsymp-164" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-121" value="Carga Dados Silver" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/analytics/Azure_Databricks.svg;pointerEvents=1;fontFamily=Helvetica;fontColor=default;fillColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1895.75" y="414" width="62.8" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-142" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.99;entryY=0.579;entryDx=0;entryDy=0;entryPerimeter=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" source="i0A2lNzfL8dHE3xWsymp-122" target="i0A2lNzfL8dHE3xWsymp-127" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-143" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" source="i0A2lNzfL8dHE3xWsymp-122" target="i0A2lNzfL8dHE3xWsymp-128" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-168" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" source="i0A2lNzfL8dHE3xWsymp-122" target="i0A2lNzfL8dHE3xWsymp-165" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-122" value="Carga Dados Gold" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/analytics/Azure_Databricks.svg;pointerEvents=1;fontFamily=Helvetica;fontColor=default;fillColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="2134" y="413" width="62.8" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-138" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.996;entryY=0.58;entryDx=0;entryDy=0;entryPerimeter=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" source="i0A2lNzfL8dHE3xWsymp-123" target="i0A2lNzfL8dHE3xWsymp-125" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-139" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" source="i0A2lNzfL8dHE3xWsymp-123" target="i0A2lNzfL8dHE3xWsymp-126" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-166" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" source="i0A2lNzfL8dHE3xWsymp-123" target="i0A2lNzfL8dHE3xWsymp-163" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-123" value="Carga Dados Bronze" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/analytics/Azure_Databricks.svg;pointerEvents=1;fontFamily=Helvetica;fontColor=default;fillColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1655.1999999999998" y="414" width="62.8" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-125" value="Camada Raw (staging)" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/analytics/Data_Lake_Store_Gen1.svg;pointerEvents=1;fontFamily=Helvetica;fontColor=default;fillColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1435.75" y="534.5" width="64" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-126" value="Camada Bronze" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/analytics/Data_Lake_Store_Gen1.svg;pointerEvents=1;fontFamily=Helvetica;fontColor=default;fillColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1654" y="535" width="64" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-127" value="Camada Silver" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/analytics/Data_Lake_Store_Gen1.svg;pointerEvents=1;fontFamily=Helvetica;fontColor=default;fillColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1894.55" y="535" width="64" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-128" value="Camada Gold" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/analytics/Data_Lake_Store_Gen1.svg;pointerEvents=1;fontFamily=Helvetica;fontColor=default;fillColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="2133.65" y="535" width="64" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-144" value="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#4D9900;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1243.5" y="376" width="23" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-146" value="3" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#4D9900;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1674.5" y="371.5" width="23" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-147" value="4" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#4D9900;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1915.05" y="371.5" width="23" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-148" value="5" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#4D9900;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="2153.75" y="371.5" width="23" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-153" value="&lt;div&gt;pathStage = &quot;dbfs:/Storage/projeto_futebolistico/camadas/stage&quot;&lt;/div&gt;&lt;div&gt;pathBronze = &quot;dbfs:/Storage/projeto_futebolistico/camadas/bronze&quot;&lt;/div&gt;&lt;div&gt;pathSilver = &quot;dbfs:/Storage/projeto_futebolistico/camadas/silver&quot;&lt;/div&gt;&lt;div&gt;pathGold = &quot;dbfs:/Storage/projeto_futebolistico/camadas/gold&quot;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="1320" y="786" width="450" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-156" value="Camadas" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/analytics/Azure_Databricks.svg;pointerEvents=1;fontFamily=Helvetica;fontColor=default;fillColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1219.9999999999998" y="760" width="62.8" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-159" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" source="i0A2lNzfL8dHE3xWsymp-158" target="i0A2lNzfL8dHE3xWsymp-115" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-160" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" source="i0A2lNzfL8dHE3xWsymp-158" target="i0A2lNzfL8dHE3xWsymp-125" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-162" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;startArrow=none;" parent="1" source="i0A2lNzfL8dHE3xWsymp-145" target="i0A2lNzfL8dHE3xWsymp-161" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-158" value="Extração Dados GitHub" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/analytics/Azure_Databricks.svg;pointerEvents=1;fontFamily=Helvetica;fontColor=default;fillColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1436.35" y="413" width="62.8" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-174" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="i0A2lNzfL8dHE3xWsymp-161" target="i0A2lNzfL8dHE3xWsymp-170" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1770" y="193" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-161" value="" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.weblogos.json;pointerEvents=1;fontFamily=Helvetica;fontSize=12;fontColor=default;fillColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1433.75" y="259.5" width="70" height="75.8" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-175" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" source="i0A2lNzfL8dHE3xWsymp-163" target="i0A2lNzfL8dHE3xWsymp-170" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-163" value="" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.weblogos.json;pointerEvents=1;fontFamily=Helvetica;fontSize=12;fontColor=default;fillColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1651.6" y="257.2" width="70" height="75.8" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-176" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" source="i0A2lNzfL8dHE3xWsymp-164" target="i0A2lNzfL8dHE3xWsymp-170" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-164" value="" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.weblogos.json;pointerEvents=1;fontFamily=Helvetica;fontSize=12;fontColor=default;fillColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1892" y="257.2" width="70" height="75.8" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-177" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" source="i0A2lNzfL8dHE3xWsymp-165" target="i0A2lNzfL8dHE3xWsymp-170" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-165" value="" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.weblogos.json;pointerEvents=1;fontFamily=Helvetica;fontSize=12;fontColor=default;fillColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="2130.65" y="256.5" width="70" height="75.8" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-169" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;endArrow=none;" parent="1" source="i0A2lNzfL8dHE3xWsymp-158" target="i0A2lNzfL8dHE3xWsymp-145" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1468" y="413" as="sourcePoint" />
+            <mxPoint x="1469" y="335" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-145" value="2" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#4D9900;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1457.25" y="371" width="23" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-170" value="Arquivo JSON usado para definir estrutura dos dadps" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="1690" y="170" width="220" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
