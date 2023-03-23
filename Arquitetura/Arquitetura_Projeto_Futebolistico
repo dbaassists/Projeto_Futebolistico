@@ -1,4 +1,4 @@
-<mxfile modified="2023-03-23T04:30:18.160Z" host="app.diagrams.net" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="tzkGMXZ5NcabiIawn0kf" version="21.0.6" type="github">
+<mxfile modified="2023-03-23T04:31:28.916Z" host="app.diagrams.net" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="cNQkrpuWTHTPLgiqLLyj" version="21.0.6" type="github">
   <diagram id="WI9T0HZ2pTsCkuznbFz-" name="Page-1">
     <mxGraphModel dx="670" dy="715" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -49,8 +49,8 @@
         <mxCell id="8DieQMmsyX2rE4fabxvS-13" value="5" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#4D9900;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
           <mxGeometry x="2379.9999999999995" y="1164" width="23" height="23" as="geometry" />
         </mxCell>
-        <mxCell id="i0A2lNzfL8dHE3xWsymp-113" value="&lt;font face=&quot;Comic Sans MS&quot; style=&quot;font-size: 16px;&quot;&gt;Vamos fazer da seguinte forma, ingerir os dados da olist.com passando os dados pelas zonas:&amp;nbsp;&lt;span style=&quot;box-sizing: inherit; color: rgb(61, 62, 62); letter-spacing: -0.06px;&quot; class=&quot;iz hm&quot;&gt;&lt;em style=&quot;box-sizing: inherit;&quot; class=&quot;jv&quot;&gt;stage-transient, bronze-zone, silver-zone e gold-zone&lt;/em&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(61, 62, 62); letter-spacing: -0.06px;&quot;&gt;&amp;nbsp;seguindo assim toda a jornada da qualidade dos dados, e por fim, responder algumas perguntas de negócio.&amp;nbsp;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;" parent="1" vertex="1">
-          <mxGeometry x="1225.5" y="40" width="449" height="118" as="geometry" />
+        <mxCell id="i0A2lNzfL8dHE3xWsymp-113" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Vamos fazer da seguinte forma, ingerir os dados da olist.com passando os dados pelas zonas:&amp;nbsp;&lt;span style=&quot;box-sizing: inherit; color: rgb(61, 62, 62); letter-spacing: -0.06px;&quot; class=&quot;iz hm&quot;&gt;&lt;em style=&quot;box-sizing: inherit;&quot; class=&quot;jv&quot;&gt;stage-transient, bronze-zone, silver-zone e gold-zone&lt;/em&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(61, 62, 62); letter-spacing: -0.06px;&quot;&gt;&amp;nbsp;seguindo assim toda a jornada da qualidade dos dados, e por fim, responder algumas perguntas de negócio.&amp;nbsp;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;fontFamily=Helvetica;" parent="1" vertex="1">
+          <mxGeometry x="1225.5" y="40" width="1114.5" height="118" as="geometry" />
         </mxCell>
         <mxCell id="i0A2lNzfL8dHE3xWsymp-115" value="Origem dos Dados" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#000000;shape=mxgraph.azure.github_code;pointerEvents=1;" parent="1" vertex="1">
           <mxGeometry x="1221" y="412" width="70" height="70" as="geometry" />
